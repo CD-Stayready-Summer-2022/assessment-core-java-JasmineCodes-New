@@ -7,7 +7,10 @@ public class StringUtils {
      * @return
      */
     public static String[] getWords(String sentence){
-        return null;
+        String sentenceArray [] = sentence.split(" "); // split the sentence
+        for (int i = 0; i < sentenceArray.length; i++) { //loop through sentence length
+        }
+        return sentenceArray;
     }
 
     /**
@@ -16,7 +19,13 @@ public class StringUtils {
      * @return
      */
     public static String getFirstWord(String sentence){
-        return null;
+        int index = sentence.indexOf(' ');
+        if (index > -1) { //check if more than one word
+            return sentence.substring(0, index).trim();
+        }
+        else {
+            return sentence; //sentence is the first word
+        }
     }
 
     /**

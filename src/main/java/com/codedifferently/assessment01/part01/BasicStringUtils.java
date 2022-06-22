@@ -10,7 +10,26 @@ public class BasicStringUtils {
      * @param str
      * @return
      */
-    public static String camelCase(String str){return null;}
+    public static String camelCase(String str) {
+        int count = 0;
+        int n = str.length();
+        char ch[] = str.toCharArray();
+        int restOfIndex = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (i == 0) {
+                ch[i] = Character.toUpperCase(ch[i]);
+            }
+            if (ch[i] == ' ') {
+                count++;
+                ch[i + 1] = Character.toUpperCase(ch[i + 1]);
+                continue;
+            } else {
+                ch[restOfIndex++] = ch[i];
+            }
+        }
+        return String.valueOf(ch, 0, n - count);
+    }
 
     /**
      * Reverse the string
@@ -19,7 +38,13 @@ public class BasicStringUtils {
      * @param str
      * @return
      */
-    public static String reverse(String str){return null;}
+    public static String reverse(String str){
+        if (str == null) {
+            return null;
+        }
+        StringBuilder output = new StringBuilder(str).reverse();
+        return output.toString();
+    }
 
     /**
      * Camel case the first letter of every word, then reverse the string and remove all spaces
@@ -30,5 +55,8 @@ public class BasicStringUtils {
      */
     public static String reverseThenCamelCase(String str){ return null; }
 
-    public static String removeFirstAndLastCharacter(String str){ return null; }
+    public static String removeFirstAndLastCharacter(String str){
+        str = str.substring(1, str.length()-1);
+        return str;
+    }
 }
